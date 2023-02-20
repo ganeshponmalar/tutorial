@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        /* form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     } */
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 25vw;
+            margin-right: 50%;
+            position: fixed;
+        }
+
+        h1,
+        p {
+            text-align: center;
+        }
+
+        input {
+            margin: 0.25em 0em 1em 0em;
+            outline: none;
+            padding: 0.5em;
+            border: none;
+            background-color: rgb(225, 225, 225);
+            border-radius: 0.25em;
+            color: black;
+        }
+
+        #role {
+            margin: 0.25em 0em 1em 0em;
+            outline: none;
+            padding: 0.5em;
+            border: none;
+            background-color: rgb(225, 225, 225);
+            border-radius: 0.25em;
+            color: black;
+        }
+
+        input[type=submit] {
+            padding: 0.75em;
+            border: none;
+            outline: none;
+            background-color: rgb(68, 18, 232);
+            color: white;
+            border-radius: 0.25em;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: rgb(41, 4, 164);
+        }
+
+        /* f */
+
+        .myDiv {
+            display: none;
+            padding: 10px;
+            margin-top: 20px;
+            margin-left: 50%;
+        }
+
+        #showOne {
+            border: 1px solid red;
+            width: 25%;
+        }
+
+        #showTwo {
+            border: 1px solid green;
+            width: 25%;
+        }
+
+        #showThree {
+            border: 1px solid blue;
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="reg-form" autocomplete="off">
+        <div class="container">
+            <h1>Register</h1>
+            <p>Kindly fill in this form to register.</p>
+
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter username." name="username" id="name" required />
+
+
+
+            <label for="userId"><b>UserId</b></label>
+            <input type="number" placeholder="Enter userId." name="userId" id="userId" required />
+
+
+
+            <label for="pwd"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="pwd" id="pwds" required />
+
+
+            <label for="pwd"><b>confirmPassword</b></label>
+            <input type="password" placeholder="Enter Password" name="cpwd" id="cpwd" required />
+
+
+            <label for="pwd"><b>User Type</b></label>
+            <select id="role" onchange="myFunction(this.value)">
+                <option>Select Option</option>
+
+                <option value="One">student</option>
+
+                <option value="Two">teacher</option>
+
+                <option value="Three">admin</option>
+
+            </select>
+            <input type="submit" id="submit" value="submit Form" onclick="register()" />
+        </div>
+    </form>
+    <div id="showOne" class="myDiv">
+        <div id="top">
+
+            <form id="stu" autocomplete="off">
+
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="field1" id="user" placeholder="Username" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>StudentId</td>
+                    <td><input type="number" name="field2" id="stuId" placeholder="StudentId" /></td><br><br>
+                </tr>
+
+
+
+                <tr>
+                    <td>DateOfBirth</td>
+                    <td><input type="date" id="date" name="trip-start" min="1990-01-01" max="2030-12-31"></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>EMAIL ID</td>
+                    <td><input type="text" name="Email_Id" id="email" maxlength="100" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>MOBILE NUMBER</td>
+                    <td><input type="text" name="Mobile_Number" id="mobile" maxlength="10" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>GENDER</td>
+                    Male <td><input type="radio" name="Gender" id="male" value="Male" /></td>
+                    Female<td><input type="radio" name="Gender" id="female" value="Female" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>ADDRESS</td>
+                    <td><textarea name="Address" rows="4" id="address" cols="30"></textarea></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>PIN CODE</td>
+                    <td><input type="text" name="Pin_Code" id="pincode" maxlength="6" /></td><br><br>
+                </tr>
+
+                <tr>
+                    <td>Branch</td>
+                    <td><input type="text" name="branch" id="branch" maxlength="30" /></td><br><br>
+                <tr>
+
+                <tr>
+                    <td>Section</td>
+                    <td><input type="text" name="section" id="section" /></td><br><br>
+                </tr>
+
+
+            </form>
+        </div>
+    </div>
+
+
+    <div id="showTwo" class="myDiv">
+
+        <div id="top">
+
+            <form id="teacherForm" autocomplete="off">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="field1" id="username" placeholder="Username" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>TeacherId</td>
+                    <td><input type="number" name="field2" id="teacherId" placeholder="teacherId" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>DateOfBirth</td>
+                    <td><input type="date" id="data" name="trip-start" min="1990-01-01" max="2030-12-31"></td><br><br>
+                </tr>
+
+                <tr>
+                    <td>EMAIL ID</td>
+                    <td><input type="text" name="Email_Id" id="emailId" maxlength="100" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>MOBILE NUMBER</td>
+                    <td><input type="text" name="Mobile_Number" id="mobileN" maxlength="10" /></td><br><br>
+                </tr>
+
+                <tr>
+                    <td>GENDER</td>
+                    Male<td><input type="radio" name="Gender" id="male" value="Male" /></td><br>
+                    Female <td><input type="radio" name="Gender" id="female" value="Female" /></td><br>
+                <tr>
+
+                <tr>
+                    <td>ADDRESS</td>
+                    <td><textarea name="Address" rows="4" id="add" cols="30"></textarea></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>PIN CODE</td>
+                    <td><input type="text" name="Pin_Code" id="pin" maxlength="6" />
+                    <td><br><br>
+                <tr>
+
+
+                <tr>
+                    <td>Qualification</td>
+                    <td><input type="text" name="branch" id="qual" maxlength="30" /></td><br><br>
+                </tr>
+
+
+                <tr>
+                    <td>Department</td>
+                    <td><input type="text" name="section" id="depar" /></td><br><br>
+                </tr>
+
+
+
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        console.log("working  or not")
+
+        function myFunction(val) {
+            if (val == "One") {
+
+
+                console.log("iam from onchange function one student");
+
+
+                const form = document.getElementById("reg-form")
+                form.addEventListener('submit', register)
+
+
+                function register(event) {
+
+                    console.log("inside function")
+
+                    event.preventDefault()
+
+                    console.log("working")
+
+                    const username = document.getElementById("name").value;
+                    console.log("qwerty", username)
+
+
+                    const role = document.getElementById('role').value;
+                    console.log("asas", role)
+
+
+                    const password = document.getElementById("pwds").value;
+                    console.log("asdf", password)
+
+
+
+                    const confirmpassword = document.getElementById("cpwd").value;
+
+
+                    const Id = document.getElementById("userId").value;
+                    console.log("qweqwe", Id)
+
+
+                    console.log("asdf", confirmpassword)
+
+                    if (password == confirmpassword) {
+
+
+
+                        const name = document.getElementById("user").value;
+                        console.log("qwerty", name)
+
+
+                        const studentId = document.getElementById('stuId').value;
+                        console.log("asas", studentId)
+
+                        const DateOfBirth = document.getElementById("date").value;
+                        console.log("asdf", DateOfBirth)
+
+
+                        const email = document.getElementById("email").value;
+                        console.log("asdf", email)
+
+
+                        const gender = document.getElementById("male").value;
+                        console.log("asdf", gender)
+
+                        const female = document.getElementById("male").value;
+                        console.log(female)
+
+                        const address = document.getElementById("address").value;
+                        console.log(address)
+
+                        const mobileNumber = document.getElementById("mobile").value;
+                        console.log(mobileNumber)
+
+                        const pincode = document.getElementById("pincode").value;
+                        console.log(pincode)
+
+                        const branch = document.getElementById("branch").value;
+                        console.log(branch)
+
+                        const section = document.getElementById("section").value;
+                        console.log(section)
+
+
+
+
+
+                        fetch('http://localhost:9000/marker/po', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                name,
+                                studentId,
+                                DateOfBirth,
+                                email,
+                                gender,
+                                address,
+                                mobileNumber,
+                                pincode,
+                                branch,
+                                section
+
+                            })
+
+
+                        }).then((res) => res.json())
+                            .then((a) => {
+                                if (a !== "") {
+                                    alert("successfully submited")
+                                } else {
+                                    alert("something went wrong")
+                                }
+
+
+                            })
+
+
+
+
+                        fetch('http://localhost:9000/section/cre', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+
+                            body: JSON.stringify({
+
+                                role,
+                                username,
+                                password,
+                                Id
+
+                            })
+
+                        }).then((res) => res.json())
+                            .then((response) => {
+                                console.log(response)
+
+                                $(function () {
+
+                                })
+
+
+                            })
+
+
+                    }
+
+                    else {
+                        alert("password and confirmpassword is not equal")
+                    }
+
+
+                }
+
+
+
+            } else if (val == "Two") {
+
+                console.log("iam from onchange function Two teacher");
+
+
+
+                const form = document.getElementById("reg-form")
+                form.addEventListener('submit', register)
+
+
+                function register(event) {
+                    console.log("inside function")
+
+                    event.preventDefault()
+
+                    console.log("working")
+
+                    const username = document.getElementById("name").value;
+
+                    console.log("qwerty", username)
+
+
+                    const role = document.getElementById('role').value;
+                    console.log("asas", role)
+
+
+                    const password = document.getElementById("pwds").value;
+                    console.log("asdf", password)
+
+
+
+                    const confirmpassword = document.getElementById("cpwd").value;
+
+
+                    const Id = document.getElementById("userId").value;
+                    console.log("qweqwe", Id)
+
+
+                    console.log("asdf", confirmpassword)
+
+                    if (password == confirmpassword) {
+
+
+
+                        const name = document.getElementById("username").value;
+
+                        console.log("qwerty", name)
+
+
+                        const teacherId = document.getElementById('teacherId').value;
+                        console.log("asas", teacherId)
+                        
+
+                        const DateOfBirth = document.getElementById("data").value;
+                        console.log("asdf", DateOfBirth)
+
+
+                        const emailId = document.getElementById("emailId").value;
+                        console.log("asdf", emailId)
+
+
+                        const gender = document.getElementById("male").value;
+                        console.log("asdf", gender)
+
+                        const female = document.getElementById("male").value;
+                        console.log(female)
+
+
+                        const mobileNumber = document.getElementById("mobileN").value;
+                        console.log(mobileNumber)
+
+                        const address = document.getElementById("add").value;
+                        console.log(address)
+
+                        const pincode = document.getElementById("pin").value;
+                        console.log(pincode)
+
+                        const Department = document.getElementById("depar").value;
+                        console.log(Department)
+
+                        const Qualification = document.getElementById("qual").value;
+                        console.log(Qualification)
+
+
+
+                        fetch('http://localhost:9000/tec/te', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+
+                                name,
+                                teacherId,
+                                DateOfBirth,
+                                emailId,
+                                gender,
+                                address,
+                                pincode,
+                                mobileNumber,
+                                Department,
+                                Qualification
+
+                            })
+
+
+                        }).then((res) => res.json())
+
+                            .then((a) => {
+                                if (a !== "") {
+                                    alert("successfully submited");
+                                } else {
+                                    alert("something went worng")
+                                }
+
+
+
+                            }).catch((err) => {
+                                console.log("teacher", err)
+                            })
+
+
+
+                        fetch('http://localhost:9000/section/cre', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+
+                            body: JSON.stringify({
+
+                                role,
+                                username,
+                                password,
+                                Id
+
+                            })
+
+
+                        }).then((res) => res.json())
+                            .then((response) => {
+                                console.log(response)
+
+
+                            })
+
+
+                    }
+
+                }
+            }
+        }
+
+
+
+
+
+
+        $(document).ready(function () {
+            $('#role').on('change', function () {
+                var demovalue = $(this).val();
+
+                console.log("qwqqwww", demovalue)
+
+                $("div.myDiv").hide();
+                $("#show" + demovalue).show();
+            });
+        });
+
+
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                $(".myDiv").hide();
+            });
+        });
+
+
+    </script>
+
+</body>
+</html>

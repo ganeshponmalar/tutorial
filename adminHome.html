@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <style>
+        #topbar{
+        background-color: #1F1F1F;
+        height: 100px;
+        width: 100%;
+        
+        }
+        #heading{
+            text-align: center;
+            color: aliceblue;
+        }
+#topbar ul{
+    float: right;
+    color:white;
+    margin-right: 20%;
+}
+
+
+     #topbar ul li{
+        display: inline;
+        margin-right: 100px;
+     }
+p{
+    color:aliceblue;
+    margin-left: 40%;
+    font-weight: 30px;
+    font-size: large;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div id="topbar">
+  <p>Admin home</p>
+    <ul>
+        
+        <a>user:</a>
+    <li><a id="demo">Home</a></li>
+        
+    <a>UserId:</a>
+    <li><a id="demoId">Home</a></li>
+
+    </ul>
+    
+       </div>
+
+    <script>
+
+// Set Item
+localStorage.setItem("lastname", "msdhoni");
+localStorage.setItem("userId", "007");
+// Retrieve
+document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+
+document.getElementById("demoId").innerHTML = localStorage.getItem("userId");
+
+    </script>
+</body>
+</html>
